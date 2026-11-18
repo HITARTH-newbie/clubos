@@ -1,3 +1,4 @@
+
 package com.clubos.config;
 
 import org.springframework.context.annotation.Bean;
@@ -7,15 +8,30 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CorsConfig {
+
     @Bean
-    WebMvcConfigurer corsConfigurer() {
+    public WebMvcConfigurer corsConfigurer() {
+
         return new WebMvcConfigurer() {
+
             @Override
             public void addCorsMappings(CorsRegistry registry) {
+
                 registry.addMapping("/api/**")
-                    .allowedOrigins("http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:5500", "http://127.0.0.1:5500", "null")
-                    .allowedMethods("GET", "POST", "PATCH", "OPTIONS")
-                    .allowedHeaders("*");
+                    .allowedOrigins(
+                        "https://clubos-clubos-92kd.vercel.app",
+                        "http://localhost:5173",
+                        "http://127.0.0.1:5173",
+                        "http://localhost:5500",
+                        "http://127.0.0.1:5500"
+                    )
+                    .allowedMethods(
+                        "GET", "POST", "PUT",
+                        "PATCH", "DELETE", "OPTIONS"
+                    )
+                    .allowedHeaders("*")
+                    .allowCredentials(false)
+                    .maxAge(3600);
             }
         };
     }
