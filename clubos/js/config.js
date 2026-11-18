@@ -11,8 +11,7 @@
  */
 window.CLUBOS_CONFIG = {
   useMock: false,
-  apiBaseUrl: 'http://localhost:8080',
-
+  apiBaseUrl: 'https://clubos-1.onrender.com',
   // Simulated network delay for the mock backend (min, max) in milliseconds.
   mockLatencyMs: [90, 240],
 
